@@ -1,5 +1,8 @@
 let city = 'Ulyanovsk';
 const APIkey = '89b7db360fddc03e875ecd0daeda6f46';
+const locationHead = document.querySelector('.location');
+const search = document.querySelector('#search');
+const searchButton = document.querySelector('#search-btn');
 
 async function getWeather() {
   try {
@@ -29,4 +32,14 @@ async function getWeather() {
   }
 }
 
-getWeather();
+function weatherRender() {
+  getWeather();
+  locationHead.textContent = `Weather in ${city}`;
+}
+
+searchButton.addEventListener('click', () => {
+  city = search.value;
+  weatherRender();
+});
+
+weatherRender();

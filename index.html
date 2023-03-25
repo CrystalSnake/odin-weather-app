@@ -11,14 +11,20 @@
   <body>
     <header>
       <h1>Weather App</h1>
+      <div class="search">
+        <label for="search">Search location</label>
+        <input id="search" type="text" />
+        <button id="search-btn">Search</button>
+      </div>
     </header>
     <main>
       <div class="container">
-        <p>Weather here</p>
+        <h2 class="location"></h2>
+        <div class="weather-container"></div>
       </div>
     </main>
     <footer>
-      <p>Copyright © 2022 CrystalSnake</p>
+      <p>Copyright © 2023 CrystalSnake</p>
       <p>
         Forecast from
         <a href="https://openweathermap.org">openweathermap.org</a>
