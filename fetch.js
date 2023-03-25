@@ -15,7 +15,7 @@ async function getWeather(city) {
         weather.location = response.location.name;
         weather.country = response.location.country;
         weather.description = response.current.condition.text;
-        weather.code = response.current.condition.code;
+        weather.icon = response.current.condition.icon;
         weather.temperature = response.current.temp_c;
         weather.feelsLike = response.current.feelslike_c;
         weather.humidity = response.current.humidity;
