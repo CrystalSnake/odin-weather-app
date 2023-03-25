@@ -3,8 +3,8 @@ const locationHead = document.querySelector('.location');
 const weatherContainer = document.querySelector('.weather-container');
 
 function weatherRender(weather) {
+  weatherContainer.textContent = '';
   locationHead.textContent = `Weather in ${weather.location}, ${weather.country}`;
-  console.log(weather);
   const status = document.createElement('div');
   status.classList.add('status');
   const icon = document.createElement('img');
@@ -41,7 +41,6 @@ function weatherRender(weather) {
   detail.appendChild(windDirection);
   detail.appendChild(windSpeed);
 
-  weatherContainer.textContent = '';
   weatherContainer.appendChild(status);
   weatherContainer.appendChild(detail);
 }
