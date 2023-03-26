@@ -8,7 +8,7 @@
 
 h1 {
   font-size: 2em;
-  margin: 0.5em 1em;
+  margin: 0.5em 0;
 }
 
 h2 {
@@ -34,16 +34,25 @@ body {
 header {
   align-self: start;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5em;
+  flex-wrap: wrap;
 }
 
 input {
   border-radius: 1em;
   padding: 0.25em 0.5em;
   border: 2px rgb(176, 255, 255) solid;
-  margin: 0 0.5em;
+  margin: 0.5em 0;
 }
 
 input:focus-visible {
