@@ -1,6 +1,5 @@
 const APIkey = '2733e033e6504841bf7150509232503';
 import weatherRender from './render.js';
-const weatherContainer = document.querySelector('.weather-container');
 
 async function getWeather(city) {
   try {
@@ -8,32 +7,28 @@ async function getWeather(city) {
       `https://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${city}`,
       { mode: 'cors' }
     );
+    if (!response.ok) throw new Error(`City ${city} not found`);
     response
       .json()
       .then(function (response) {
-        if (response.hasOwnProperty('error')) {
-          weatherContainer.textContent = response.error.message;
-          throw response.error.message;
-        } else {
-          const weather = {};
-          weather.location = response.location.name;
-          weather.country = response.location.country;
-          weather.description = response.current.condition.text;
-          weather.icon = response.current.condition.icon;
-          weather.temperature = response.current.temp_c;
-          weather.feelsLike = response.current.feelslike_c;
-          weather.humidity = response.current.humidity;
-          weather.pressure = response.current.pressure_mb;
-          weather.windSpeed = response.current.wind_kph;
-          weather.windDirection = response.current.wind_dir;
-          return weather;
-        }
+        const data = {};
+        data.location = response.location.name;
+        data.country = response.location.country;
+        data.description = response.current.condition.text;
+        data.icon = response.current.condition.icon;
+        data.temperature = response.current.temp_c;
+        data.feelsLike = response.current.feelslike_c;
+        data.humidity = response.current.humidity;
+        data.pressure = response.current.pressure_mb;
+        data.windSpeed = response.current.wind_kph;
+        data.windDirection = response.current.wind_dir;
+        return data;
       })
       .then(function (response) {
         weatherRender(response);
       });
   } catch (error) {
-    console.log(`Oops${error}`);
+    alert(`Oops ${error}`);
   }
 }
 
